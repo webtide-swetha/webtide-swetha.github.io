@@ -1,0 +1,6 @@
+name = "webtide-chat"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+
+[vars]
+# Public, non-secret config only. Put OPENROUTER_API_KEY via `wrangler secret put`.

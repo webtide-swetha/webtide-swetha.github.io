@@ -1,0 +1,16 @@
+export const tools = [
+  "n8n",
+  "React",
+  "Next.js",
+  "Tailwind",
+  "WordPress",
+  "Shopify",
+  "Meta Ads",
+  "Google Ads",
+  "GA4",
+  "Figma",
+  "Zapier",
+  "OpenAI",
+  "Make",
+  "Webflow",
+] as const;

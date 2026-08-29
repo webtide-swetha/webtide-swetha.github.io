@@ -87,3 +87,4 @@ This is a **user site** (`webtide-swetha.github.io`), so Vite `base` is `/`.
 ## Stack
 
 Vite + React + TypeScript, Tailwind v4, Motion, Lucide.
+Deployment update

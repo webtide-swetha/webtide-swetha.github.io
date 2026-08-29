@@ -88,7 +88,7 @@ export async function streamAssistant(
   onToken: (chunk: string) => void,
   signal: AbortSignal,
 ): Promise<boolean> {
-  const endpoint = import.meta.env.VITE_CHAT_ENDPOINT;
+  const endpoint = import.meta.env.VITE_CHAT_ENDPOINT?.trim();
   if (!endpoint) return false;
 
   const response = await fetch(endpoint, {

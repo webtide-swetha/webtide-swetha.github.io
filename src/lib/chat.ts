@@ -88,20 +88,47 @@ export async function streamAssistant(
   onToken: (chunk: string) => void,
   signal: AbortSignal,
 ): Promise<boolean> {
-  const endpoint = import.meta.env.VITE_CHAT_ENDPOINT?.trim();
-  if (!endpoint) return false;
+  const payload = {
+    model: chatConfig.model,
+    messages: [{ role: "system", content: chatSystemPrompt }, ...messages],
+    stream: true,
+    max_tokens: 512,
+  };
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: chatConfig.model,
-      messages: [{ role: "system", content: chatSystemPrompt }, ...messages],
-      stream: true,
-    }),
-    signal,
-  });
+  const worker = import.meta.env.VITE_CHAT_ENDPOINT?.trim();
+  if (worker) {
+    const response = await fetch(worker, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal,
+    });
+    return readSse(response, onToken);
+  }
 
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY?.trim();
+  if (apiKey) {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": brand.liveUrl,
+        "X-Title": brand.fullName,
+      },
+      body: JSON.stringify(payload),
+      signal,
+    });
+    return readSse(response, onToken);
+  }
+
+  return false;
+}
+
+async function readSse(
+  response: Response,
+  onToken: (chunk: string) => void,
+): Promise<boolean> {
   if (!response.ok || !response.body) {
     throw new Error("chat endpoint failed");
   }

@@ -2,8 +2,8 @@ import { brand } from "./brand";
 import { pricingTiers } from "./pricing";
 
 export const chatConfig = {
-  /** Swap the model ID here. The worker forwards this to OpenRouter. */
-  model: "meta-llama/llama-3.1-8b-instruct",
+  /** Grok via OpenRouter. Swap this ID if the key has no Grok access. */
+  model: "x-ai/grok-4.3",
   maxInputChars: 500,
   maxTurns: 20,
   debounceMs: 400,

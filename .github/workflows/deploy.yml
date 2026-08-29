@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Write OpenRouter config
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node -e "require('fs').writeFileSync('public/chat-config.json', JSON.stringify({ openRouterKey: process.env.OPENROUTER_API_KEY || '' }))"
+
       - name: Build
         run: npm run build
         env:

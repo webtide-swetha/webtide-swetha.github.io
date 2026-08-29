@@ -49,7 +49,10 @@ export function whatsappNudge(): ChatMessage {
 }
 
 export function matchLocalReply(input: string): string {
-  const text = input.toLowerCase();
+  const text = input.toLowerCase().trim();
+  if (/^(hi+|hello|hey+|hai|vanakkam)[\s!.]*$/.test(text)) {
+    return `Vanakkam — this is the WebTide assistant for Swetha's freelance studio. I can help with a website, ads, SEO, social, or n8n automation. What does your business need?`;
+  }
   const scored = localFaqRules
     .map((rule) => ({
       rule,
@@ -88,41 +91,47 @@ export async function streamAssistant(
   onToken: (chunk: string) => void,
   signal: AbortSignal,
 ): Promise<boolean> {
-  const payload = {
-    model: chatConfig.model,
-    messages: [{ role: "system", content: chatSystemPrompt }, ...messages],
-    stream: true,
-    max_tokens: 512,
-  };
+  const apiKey = await resolveOpenRouterKey();
+  if (!apiKey) return false;
 
-  const worker = import.meta.env.VITE_CHAT_ENDPOINT?.trim();
-  if (worker) {
-    const response = await fetch(worker, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal,
-    });
-    return readSse(response, onToken);
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": brand.liveUrl,
+      "X-Title": brand.fullName,
+    },
+    body: JSON.stringify({
+      model: chatConfig.model,
+      messages: [{ role: "system", content: chatSystemPrompt }, ...messages],
+      stream: true,
+      max_tokens: 512,
+    }),
+    signal,
+  });
+  return readSse(response, onToken);
+}
+
+let cachedOpenRouterKey: string | undefined;
+
+async function resolveOpenRouterKey(): Promise<string> {
+  const fromEnv = import.meta.env.VITE_OPENROUTER_API_KEY?.trim();
+  if (fromEnv) return fromEnv;
+  if (cachedOpenRouterKey !== undefined) return cachedOpenRouterKey;
+  try {
+    const response = await fetch("/chat-config.json", { cache: "no-store" });
+    if (!response.ok) {
+      cachedOpenRouterKey = "";
+      return "";
+    }
+    const data = (await response.json()) as { openRouterKey?: string };
+    cachedOpenRouterKey = data.openRouterKey?.trim() ?? "";
+    return cachedOpenRouterKey;
+  } catch {
+    cachedOpenRouterKey = "";
+    return "";
   }
-
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY?.trim();
-  if (apiKey) {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": brand.liveUrl,
-        "X-Title": brand.fullName,
-      },
-      body: JSON.stringify(payload),
-      signal,
-    });
-    return readSse(response, onToken);
-  }
-
-  return false;
 }
 
 async function readSse(

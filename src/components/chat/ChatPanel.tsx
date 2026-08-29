@@ -1,13 +1,13 @@
 import { type FormEvent, type KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Send } from "lucide-react";
 import { Logo } from "../Logo";
+import { brand } from "../../data/brand";
 import { chatSuggestions } from "../../data/chat";
 import {
   chatConfig,
   hrefFor,
   linkify,
   loadChat,
-  matchLocalReply,
   saveChat,
   streamAssistant,
   whatsappNudge,
@@ -53,19 +53,17 @@ export function ChatPanel({ onClose }: Props) {
 
     let assistant = "";
     const abort = new AbortController();
-    const timeout = window.setTimeout(() => abort.abort(), 25000);
+    const timeout = window.setTimeout(() => abort.abort(), 45000);
 
     const applyAssistant = (content: string) => {
       setMessages([...history, { role: "assistant", content }]);
     };
 
+    const offline =
+      "The Grok assistant is not connected yet. WhatsApp Swetha at " +
+      `${brand.whatsappUrl} or email ${brand.email}.`;
+
     try {
-      /**
-       * Live path: POST VITE_CHAT_ENDPOINT (Cloudflare Worker).
-       * The Worker holds the OpenRouter key. This bundle never contains an API key.
-       * If the endpoint is unset or the request fails, we degrade to matchLocalReply()
-       * — keyword matching over the same knowledge base — so the widget never looks broken.
-       */
       const streamed = await streamAssistant(
         history,
         (chunk) => {
@@ -75,10 +73,10 @@ export function ChatPanel({ onClose }: Props) {
         abort.signal,
       );
       if (!streamed && !assistant) {
-        applyAssistant(matchLocalReply(trimmed));
+        applyAssistant(offline);
       }
     } catch {
-      applyAssistant(matchLocalReply(trimmed));
+      applyAssistant(offline);
     } finally {
       window.clearTimeout(timeout);
       setTyping(false);

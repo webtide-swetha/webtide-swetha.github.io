@@ -18,7 +18,7 @@ dist-ssr
 .env.*.local
 .dev.vars
 **/.dev.vars
-worker/.dev.vars
+public/chat-config.json
 
 # Local helper scripts — do not upload
 git-fetch.sh

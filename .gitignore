@@ -20,6 +20,11 @@ dist-ssr
 **/.dev.vars
 worker/.dev.vars
 
+# Local helper scripts — do not upload
+git-fetch.sh
+git-push.sh
+git-commit.sh
+
 # Editor
 .vscode/*
 !.vscode/extensions.json

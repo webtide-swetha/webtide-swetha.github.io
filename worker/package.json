@@ -1,5 +1,5 @@
 {
-  "name": "webtide-chat-worker",
+  "name": "quvo-chat-worker",
   "private": true,
   "scripts": {
     "dev": "wrangler dev",

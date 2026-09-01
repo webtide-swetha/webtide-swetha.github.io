@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { duration, easeOutExpo } from "../lib/motion";
 
-const FLAG = "webtide-preloaded";
+const FLAG = "quvo-preloaded";
 
 export function Preloader() {
   const reduced = usePrefersReducedMotion();
@@ -43,9 +43,9 @@ export function Preloader() {
           transition={{ duration: reduced ? 0.3 : duration.enter, ease: easeOutExpo }}
           role="status"
           aria-live="polite"
-          aria-label="WebTide loading"
+          aria-label="QUVO loading"
         >
-          <Logo className="h-16 w-24" draw title="WebTide" />
+          <Logo className="h-16 w-24" draw title="QUVO" />
         </motion.div>
       ) : null}
     </AnimatePresence>

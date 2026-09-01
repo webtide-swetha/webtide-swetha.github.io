@@ -102,9 +102,9 @@ export function ChatPanel({ onClose }: Props) {
   return (
     <div className="flex h-full flex-col">
       <header className="flex items-center gap-3 border-b border-navy-700 px-4 py-3">
-        <Logo className="h-8 w-10" title="WebTide" />
+        <Logo className="h-8 w-10" title={brand.name} />
         <div className="min-w-0 flex-1">
-          <p className="font-display text-sm font-semibold text-text-hi">WebTide Assistant</p>
+          <p className="font-display text-sm font-semibold text-text-hi">{brand.name} Assistant</p>
           <p className="flex items-center gap-1.5 text-xs text-text-lo">
             <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
             Online

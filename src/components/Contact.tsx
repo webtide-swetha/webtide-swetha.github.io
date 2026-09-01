@@ -11,7 +11,7 @@ type Status = "idle" | "loading" | "success" | "error";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
-const mailto = `mailto:${brand.email}?subject=${encodeURIComponent("Project enquiry — WebTide")}`;
+const mailto = `mailto:${brand.email}?subject=${encodeURIComponent("Project enquiry — QUVO")}`;
 
 function fieldClass(invalid?: boolean) {
   return cn(

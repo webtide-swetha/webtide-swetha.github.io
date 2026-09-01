@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker — OpenRouter proxy for the WebTide chat widget.
+ * Cloudflare Worker — OpenRouter proxy for the QUVO chat widget.
  *
  * Secrets (wrangler secret put):
  *   OPENROUTER_API_KEY
@@ -99,7 +99,7 @@ export default {
         Authorization: `Bearer ${env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
         "HTTP-Referer": "https://webtide-swetha.github.io/",
-        "X-Title": "WebTide Digital Solutions",
+        "X-Title": "QUVO",
       },
       body: JSON.stringify({
         model,

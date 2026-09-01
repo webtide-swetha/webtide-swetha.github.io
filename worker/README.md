@@ -1,4 +1,4 @@
-# WebTide chat proxy (Cloudflare Worker)
+# QUVO chat proxy (Cloudflare Worker)
 
 This Worker holds the OpenRouter API key and is the only thing the landing page talks to.
 

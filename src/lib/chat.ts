@@ -13,7 +13,7 @@ export type ChatMessage = {
   content: string;
 };
 
-const STORAGE_KEY = "webtide-chat";
+const STORAGE_KEY = "quvo-chat";
 
 export function loadChat(): ChatMessage[] {
   try {
@@ -51,7 +51,7 @@ export function whatsappNudge(): ChatMessage {
 export function matchLocalReply(input: string): string {
   const text = input.toLowerCase().trim();
   if (/^(hi+|hello|hey+|hai|vanakkam)[\s!.]*$/.test(text)) {
-    return `Vanakkam — this is the WebTide assistant for Swetha's freelance studio. I can help with a website, ads, SEO, social, or n8n automation. What does your business need?`;
+    return `Vanakkam — this is the QUVO assistant for Swetha's freelance studio. I can help with a website, ads, SEO, social, or n8n automation. What does your business need?`;
   }
   const scored = localFaqRules
     .map((rule) => ({

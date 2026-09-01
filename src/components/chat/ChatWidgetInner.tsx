@@ -18,7 +18,7 @@ export function ChatWidgetInner() {
       <button
         type="button"
         className="relative flex size-14 items-center justify-center rounded-full bg-teal-400 text-navy-900 shadow-[0_0_0_0_rgba(43,163,184,0.5)] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300"
-        aria-label={open ? "Close chat" : "Open WebTide assistant"}
+        aria-label={open ? "Close chat" : "Open QUVO assistant"}
         aria-expanded={open}
         aria-haspopup="dialog"
         onClick={() => setOpen((v) => !v)}
@@ -41,7 +41,7 @@ export function ChatWidgetInner() {
             ref={panelRef}
             role="dialog"
             aria-modal="true"
-            aria-label="WebTide Assistant"
+            aria-label="QUVO Assistant"
             className="mb-3 origin-bottom-right overflow-hidden rounded-2xl border border-navy-700 bg-navy-800 shadow-2xl"
             initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.92, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

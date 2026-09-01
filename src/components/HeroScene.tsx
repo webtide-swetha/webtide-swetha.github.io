@@ -28,7 +28,7 @@ export function HeroScene() {
         >
           <img
             src="/images/hero-3d.png"
-            alt="3D glass workflow scene for WebTide"
+            alt="3D glass workflow scene for QUVO"
             width={1376}
             height={768}
             className="relative z-[1] h-auto w-full rounded-[1.75rem] border border-navy-700/80 shadow-[0_30px_80px_rgba(0,0,0,0.45)]"

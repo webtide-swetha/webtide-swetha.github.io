@@ -1,6 +1,6 @@
-# WebTide Digital Solutions
+# QUVO
 
-Freelance digital-services landing page for **WebTide**, run by **Swetha**. Live at [https://webtide-swetha.github.io/](https://webtide-swetha.github.io/).
+Freelance digital-services landing page for **QUVO**, run by **Swetha**. Live at [https://webtide-swetha.github.io/](https://webtide-swetha.github.io/).
 
 Dark-first navy/teal site: services (bento), n8n automation spotlight, process, pricing, contact, and a chat widget that talks to OpenRouter through a Cloudflare Worker.
 

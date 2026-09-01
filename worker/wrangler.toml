@@ -1,4 +1,4 @@
-name = "webtide-chat"
+name = "quvo-chat"
 main = "src/index.ts"
 compatibility_date = "2026-08-01"
 

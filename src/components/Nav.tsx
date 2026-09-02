@@ -28,17 +28,18 @@ export function Nav() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:h-[4.25rem] sm:px-8">
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-5 sm:h-[5.25rem] sm:px-8">
         <a
           href="#top"
-          className="flex items-center gap-2.5 text-text-hi focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400"
+          className="flex items-center gap-3 text-text-hi focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400"
         >
-          <Logo className="h-8 w-12" />
-          <span className="font-display text-sm font-semibold tracking-tight sm:text-base">
-            {brand.name}
-            <span className="hidden font-sans font-normal text-text-lo sm:inline">
-              {" "}
-              · Digital Solutions
+          <Logo className="h-11 w-11 shrink-0 sm:h-12 sm:w-12" />
+          <span className="flex min-w-0 flex-col justify-center leading-none">
+            <span className="font-display text-2xl font-bold tracking-tight sm:text-[2.15rem]">
+              {brand.name}
+            </span>
+            <span className="mt-1 hidden font-sans text-[0.68rem] font-medium tracking-[0.16em] text-text-lo uppercase sm:inline">
+              Digital Solutions
             </span>
           </span>
         </a>

@@ -45,7 +45,7 @@ export function Preloader() {
           aria-live="polite"
           aria-label="QUVO loading"
         >
-          <Logo className="h-16 w-24" draw title="QUVO" />
+          <Logo className="h-24 w-24" draw title="QUVO" />
         </motion.div>
       ) : null}
     </AnimatePresence>

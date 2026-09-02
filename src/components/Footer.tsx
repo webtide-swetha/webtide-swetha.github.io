@@ -8,9 +8,14 @@ export function Footer() {
     <footer className="border-t border-navy-700 px-5 py-12 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
         <div>
-          <a href="#top" className="inline-flex items-center gap-2 text-text-hi">
-            <Logo className="h-8 w-12" />
-            <span className="font-display font-semibold">{brand.fullName}</span>
+          <a href="#top" className="inline-flex items-center gap-3 text-text-hi">
+            <Logo className="h-10 w-10 shrink-0" />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-xl font-bold tracking-tight">{brand.fullName}</span>
+              <span className="mt-1 font-sans text-[0.68rem] font-medium tracking-[0.16em] text-text-lo uppercase">
+                Digital Solutions
+              </span>
+            </span>
           </a>
           <p className="mt-3 max-w-xs text-sm text-text-lo">{brand.secondaryLine}</p>
         </div>

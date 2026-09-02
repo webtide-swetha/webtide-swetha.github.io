@@ -9,6 +9,7 @@
  */
 
 const ALLOWED_ORIGINS = [
+  "https://quvo-swetha.github.io",
   "https://webtide-swetha.github.io",
   "http://localhost:5173",
   "http://127.0.0.1:5173",
@@ -98,7 +99,7 @@ export default {
       headers: {
         Authorization: `Bearer ${env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://webtide-swetha.github.io/",
+        "HTTP-Referer": "https://quvo-swetha.github.io/",
         "X-Title": "QUVO",
       },
       body: JSON.stringify({

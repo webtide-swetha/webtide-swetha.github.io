@@ -14,7 +14,7 @@ export const brand = {
   instagramUrl: "https://instagram.com/quvo.digital",
   linkedin: "linkedin.com/in/quvo",
   linkedinUrl: "https://linkedin.com/in/quvo",
-  liveUrl: "https://webtide-swetha.github.io/",
+  liveUrl: "https://quvo-swetha.github.io/",
   description:
     "Freelance digital studio run by Swetha. Websites, SEO, paid ads, social, AI chatbots, and self-hosted n8n automation for Tamil Nadu businesses — without agency markup.",
 } as const;

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://webtide-swetha.github.io/",
+  "homepage": "https://quvo-swetha.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

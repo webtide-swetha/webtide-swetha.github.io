@@ -1,6 +1,6 @@
 # QUVO
 
-Freelance digital-services landing page for **QUVO**, run by **Swetha**. Live at [https://webtide-swetha.github.io/](https://webtide-swetha.github.io/).
+Freelance digital-services landing page for **QUVO**, run by **Swetha**. Live at [https://quvo-swetha.github.io/](https://quvo-swetha.github.io/).
 
 Dark-first navy/teal site: services (bento), n8n automation spotlight, process, pricing, contact, and a chat widget that talks to OpenRouter through a Cloudflare Worker.
 
@@ -55,7 +55,7 @@ Set a **hard spend limit** on the OpenRouter key in the OpenRouter dashboard.
 
 ## GitHub Pages
 
-This is a **user site** (`webtide-swetha.github.io`), so Vite `base` is `/`.
+This is a **user site** (`quvo-swetha.github.io`), so Vite `base` is `/`.
 
 1. Push `main`.
 2. Settings → Pages → Source: **GitHub Actions**.
